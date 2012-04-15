@@ -1,0 +1,13 @@
+#!/usr/bin/make -f
+
+%:
+	dh ${@} --parallel
+
+override_dh_auto_install:
+	dh_auto_install -- DESTDIR=debian/live-build-cgi
+
+	# Removing unused files
+	rm -f debian/live-build/usr/share/doc/live-build-cgi/COPYING
+
+override_dh_builddeb:
+	dh_builddeb -- -Zxz

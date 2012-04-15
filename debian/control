@@ -1,0 +1,25 @@
+Source: live-build-cgi
+Section: misc
+Priority: optional
+Maintainer: Live Systems Maintainers <debian-live@lists.debian.org>
+Uploaders: Daniel Baumann <mail@daniel-baumann.ch>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.6
+Homepage: http://live-systems.org/devel/live-build-cgi/
+Vcs-Browser: http://live-systems.org/gitweb/?p=live-build-cgi.git
+Vcs-Git: git://live-systems.org/git/live-build-cgi.git
+
+Package: live-build-cgi
+Architecture: all
+Depends: ${misc:Depends}, live-build (>= 5), live-build (<= 6)
+Recommends:
+ apache2 | httpd,
+ cron,
+Description: Live System Build Scripts (CGI frontend)
+ The Live Systems project maintains the components to build Debian based Live
+ systems and the official Debian Live images themselves.
+ .
+ live-build contains the components to build a live system from a configuration
+ directory.
+ .
+ This package contains the CGI frontend (experimental!).

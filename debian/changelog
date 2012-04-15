@@ -1,0 +1,5 @@
+live-build-cgi (5.0~a5-1) unstable; urgency=low
+
+  * Initial release, previously included in live-build.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Mon, 27 Apr 2015 08:21:17 +0200
