@@ -1,6 +1,6 @@
-# French translations for live-boot manpages
+# French translations for live-build-cgi manpages
 # Copyright (C) 2015 Olivier Humbert <trebmuh@tuxfamily.org>
-# This file is distributed under the same license as the live-boot package.
+# This file is distributed under the same license as the live-build-cgi package.
 #
 msgid ""
 msgstr ""
