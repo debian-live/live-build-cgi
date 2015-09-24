@@ -1,0 +1,295 @@
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH LIVE\-BUILD 7 24.09.2015 5.0~a5\-1 "Projet Live Systems"
+
+.SH NOM
+\fBlive\-build\fP \- la suite d'outil live systems
+
+.SH SYNOPSIS
+.\" FIXME
+.\" FIXME
+\fBlb \fP\fICOMMANDE\fP [\fB\-h|\-\-help\fP] [\fB\-u|\-\-usage\fP] [\fB\-v|\-\-version\fP]
+[\fB\-\-breakpoints\fP] [\fB\-\-conffile\fP] [\fB\-\-debug\fP] [\fB\-\-force\fP] [\fB\-\-quiet\fP]
+[\fB\-\-verbose\fP]
+
+.SH DESCRIPTION
+.\" FIXME
+live\-build est un ensemble de scripts pour la construction d'images système
+live. L'idée derrière live\-build est un suite d'outils qui utilisent un
+répertoire de configuration pour automatiser complètement tous les aspects
+de la construction d'une image Live.
+.PP
+Le \fICOMMANDE\fP est le nom d'une commande live\-build (voir ci\-dessous).
+.PP
+.\" FIXME
+Davantage de documentation à propose de l'utilisation de live\-build est
+disponible dans chacune des pages de manuel pour chaque assistant et dans le
+manuel à l'adresse <\fIhttp://live\-systems.org/manual/\fP>.
+
+.SH OPTIONS
+.\" FIXME
+.SS "Options partagées live\-build"
+Les options de commandes en ligne suivantes sont supportées par tous les
+programmes live\-build.
+.IP "\fB\-h, \-\-help\fP" 4
+affiche l'aide puis quitte.
+.IP "\fB\-u, \-\-usage\fP" 4
+affiche l'utilisation puis quitte.
+.IP "\fB\-v, \-\-version\fP" 4
+affiche les informations de version puis quitte.
+.SS "Options commundes de live\-build"
+Les options de lignes de commande suivantes sont supportées par la pulpart
+des programmes live\-build. Voir la page de chaque programme pour une
+explication complète de ce que chaque option fait.
+.IP \fB\-\-breakpoints\fP 4
+lance avec des points d'arrêt (breakpoints).
+.IP \fB\-\-conffile\fP 4
+utilise un fichier de configuration personnalisé.
+.IP \fB\-\-debug\fP 4
+affiche les informations de debug
+.IP \fB\-\-force\fP 4
+force l'exécution de l'assistant, même si le fichier de stage existe.
+.IP \fB\-\-quiet\fP 4
+soit calme
+.IP \fB\-\-verbose\fP 4
+.\" FIXME
+soit verbeux
+
+.SH "COMMANDES LIVE\-BUILD"
+.\" FIXME
+Nous divisons live\-build en commandes de haut niveau ("porcelaine") et de
+bas niveau ("plomberie").
+.PP
+.\" FIXME
+Voici la liste complète de toutes les commandes live\-build disponibles. Voir
+pages de manuels pour de la documentation additionnelle.
+
+.SH "COMMANDES DE HAUT\-NIVEAU (PORCELAINE)"
+.\" FIXME
+Nous séparons les commandes porcelaine en commandes principales et quelques
+utilitaires utilisateur auxiliaires.
+.SS "Commandes porcelaine principales"
+.IP \fBlb_config\fP(1) 4
+crée une configuration pour live\-build
+.IP \fBlb_bootstrap\fP(1) 4
+crée le premier stage en amorçant un système debian basique
+.IP \fBlb_chroot\fP(1) 4
+crée le deuxième stage en personnalisant le chroot
+.IP \fBlb_binary\fP(1) 4
+crée le troisième stage en générant une image binaire
+.IP \fBlb_source\fP(1) 4
+crée un quatrième stage optionnel en générant une image source
+.IP \fBlb_clean\fP(1) 4
+nettoie les répertoires de construction du système
+.SS "Commandes auxiliaires"
+.IP \fBlb\fP(1) 4
+emballage live\-build générique
+.IP \fBlb_build\fP(1) 4
+pseudo pour tous les stages
+.IP \fBlb_local\fP(1) 4
+assistant pour l'utilisation d'un live\-build local
+.IP \fBlb_testroot\fP(1) 4
+.\" FIXME
+s'assure que le système est construit en tant qu'administrateur (root)
+
+.SH "COMMANDES BAS\-NIVEAU (PLOMBERIE)"
+.\" FIXME
+Le travail réel de live\-build est implémenté dans les commandes bas\-niveau,
+appelées plomberie. Elles ne sont pas supposées être utilisées par
+l'utilisateur final, elles devraient rester avec les porcelaines
+puisqu'elles s'assurent que toutes les différentes commandes de plomberie
+sont exécutées dans le bon ordre. Toutefois, si vous prévoyez de ré\-utiliser
+les commandes live\-build dans vos propres scripts, alors les plomberies
+pourraient vous intéresser.
+.PP
+Notez que l'interface (ensemble des options et des sémantiques) de ces
+commandes bas\-niveau sont pensées pour être beaucoup plus stables que les
+commandes de niveau Porcelaine. D'un autre côté, l'interface des commandes
+Porcelaine sont sujettent à changer afin d'améliorer l'expérience de
+l'utilisateur final.
+.SS "Commandes d'amorçage"
+.IP \fBlb_bootstrap_cache\fP(1) 4
+stage de démarrage cache
+.IP \fBlb_bootstrap_debootstrap\fP(1) 4
+amorce un système Debian avec debootstrap(8)
+.SS "Commandes chroot"
+.IP \fBlb_chroot_apt\fP(1) 4
+gère /etc/apt/apt.conf
+.IP \fBlb_chroot_cache\fP(1) 4
+stage chroot cache
+.IP \fBlb_chroot_debianchroot\fP(1) 4
+gère /etc/debian_chroot
+.IP \fBlb_chroot_devpts\fP(1) 4
+monte /dev/pts
+.IP \fBlb_chroot_dpkg\fP(1) 4
+gère /sbin/dpkg
+.IP \fBlb_chroot_hacks\fP(1) 4
+exécute des hacks dans le chroot
+.IP \fBlb_chroot_hostname\fP(1) 4
+gère /bin/hostname
+.IP \fBlb_chroot_hosts\fP(1) 4
+gère /etc/hosts
+.IP \fBlb_chroot_install\-packages\fP(1) 4
+installe les paquets en attente dans le chroot
+.IP \fBlb_chroot_interactive\fP(1) 4
+fabrique la construction interactive
+.IP \fBlb_chroot_linux\-image\fP(1) 4
+gère /etc/kernel\-img.conf
+.IP \fBlb_chroot_hooks\fP(1) 4
+exécute des hooks locaux dans le chroot
+.IP \fBlb_chroot_local\-includes\fP(1) 4
+copie les fichiers locaux dans le chroot
+.IP \fBlb_chroot_packages\fP(1) 4
+met en attente l'installation des paquets dans le chroot
+.IP \fBlb_chroot_local\-patches\fP(1) 4
+applique des patches sur le chroot
+.IP \fBlb_chroot_local\-preseed\fP(1) 4
+utilise le fichier local de pré\-configuration de debconf
+.IP \fBlb_chroot_packagelists\fP(1) 4
+met en attente l'installation des listes de paquet dans le chroot
+.IP \fBlb_chroot_proc\fP(1) 4
+monte /proc
+.IP \fBlb_chroot_resolv\fP(1) 4
+gère /etc/resolv.conf
+.IP \fBlb_chroot_selinuxfs\fP(1) 4
+monte /selinux
+.IP \fBlb_chroot_archives\fP(1) 4
+gère /etc/apt/sources.list
+.IP \fBlb_chroot_sysfs\fP(1) 4
+monte /sys
+.IP \fBlb_chroot_sysv\-rc\fP(1) 4
+gère /usr/sbin/policy\-rc.d
+.IP \fBlb_chroot_task\-lists\fP(1) 4
+install les listes de tâches (task) dans le chroot
+.SS "Commandes binaires"
+.IP \fBlb_binary_chroot\fP(1) 4
+copie le chroot dans le chroot
+.IP \fBlb_binary_debian\-installer\fP(1) 4
+installe debian\-installer dans le binaire
+.IP \fBlb_binary_disk\fP(1) 4
+installe l'information disque dans le binaire
+.IP \fBlb_binary_grub\fP(1) 4
+installe grub dans le binaire
+.IP \fBlb_binary_grub2\fP(1) 4
+installe grub2 dans le binaire
+.IP \fBlb_binary_includes\fP(1) 4
+copie les fichiers dans le binaire
+.IP \fBlb_binary_iso\fP(1) 4
+construit l'image binaire iso
+.IP \fBlb_binary_linux\-image\fP(1) 4
+installe linux\-image dans le binaire
+.IP \fBlb_binary_local\-hooks\fP(1) 4
+exécute les hooks locaux dans le binaire
+.IP \fBlb_binary_local\-includes\fP(1) 4
+copie les fichiers dans le binaire
+.IP \fBlb_binary_local\-packagelists\fP(1) 4
+installe les listes de paquets locaux dans le binaire
+.IP \fBlb_binary_manifest\fP(1) 4
+crée le manifest
+.IP \fBlb_binary_checksums\fP(1) 4
+crée les sommes de vérification des binaires (md5, sha1, et/ou sha256)
+.IP \fBlb_binary_memtest\fP(1) 4
+installe un memtest dans le binaire
+.IP \fBlb_binary_net\fP(1) 4
+construit un image binaire démarrable par le net (netboot)
+.IP \fBlb_binary_rootfs\fP(1) 4
+construit l'image rootfs
+.IP \fBlb_binary_syslinux\fP(1) 4
+installe syslinux dans le binaire
+.IP \fBlb_binary_tar\fP(1) 4
+construit une image binaire pour disque dur
+.IP \fBlb_binary_hdd\fP(1) 4
+construit une image hdd binaire
+.IP \fBlb_binary_win32\-loader\fP(1) 4
+installe win32\-loader into binary
+.SS "Commandes sources"
+.IP \fBlb_source_debian\fP(1) 4
+télécharge les sources
+.IP \fBlb_source_debian\-live\fP(1) 4
+copie la configuration debian\-live dans la source
+.IP \fBlb_source_disk\fP(1) 4
+installe l'information disque dans la source
+.IP \fBlb_source_iso\fP(1) 4
+construit l'image source iso
+.IP \fBlb_source_checksums\fP(1) 4
+crée les sommes de vérifications de la source (md5, sha1, et/ou sha256)
+.IP \fBlb_source_net\fP(1) 4
+construit l'image net source
+.IP \fBlb_source_tar\fP(1) 4
+construit le tarball source
+.IP \fBlb_source_hdd\fP(1) 4
+.\" FIXME
+construit l'image hdd source
+
+.SH "FICHIERS DE CONFIGURATION"
+.\" FIXME
+Plusieurs commandes live\-build utilisent des fichier dans le répertoire
+\fIconfig/\fP pour contrôler ce qu'elles font. Hormis le \fIconfig/common\fP
+commun, qui est utilisé par toutes les commandes live\-build, quelques
+fichiers additionnels peuvent être utilisés pour configurer le comportement
+de commandes live*build spécifiques. Ces fichiers sont typiquement nommés
+config/stage ou config/stage_assistant (où "stage" est évidemment remplacé
+par le nom du stage auquel il appartient, et "assistant" avec le nom de
+l'assistant).
+.PP
+Par exemple, lb_bootstrap_debootstrap utilise des fichiers nommés
+config/bootstrap et config/bootstrap_debootstrap pour lire les options qu'il
+utilisera. Voir les pages de manuel des commandes individuelles pour des
+détails à propos des noms et des formats pour les fichiers qu'ils
+utilisent. Généralement, ces fichiers contiennent des variables avec des
+valeurs assignées, une variable par ligne. Certains programmes dans
+live\-build utilisent des paires de valeurs ou des systèmes d'affectation de
+variable légèrement plus compliquée.
+.PP
+Notez que live\-build respectera les variables d'environnement qui sont
+présentes dans le contexte du shell qui est utilisé. Si les variables
+peuvent être lues depuis les fichiers de configuration, alors elles
+remplacent les variables d'environement, et si les options en ligne de
+commande sont utilisées, elles remplacent les valeurs des fichiers de
+configuration. Si aucune valeur pour une variable donnée ne peut être
+trouvée et est donc non\-paramétrée, live\-build la paramétrera
+automatiquement à la valeur par défaut.
+.PP
+Dans de rares cas, vous pourriez vouloir avoir différentes versions de ces
+fichiers pour différentes architectures ou distributions. Si les fichiers
+sont nommées config/stage.arch ou config/stage_helper.arch, et si
+config/stage.dist ou config/stage_helper.dist existe, où "arch" est
+identique à la sortie de "dpkg \-\-print\-architecture" et "dist" est identique
+au nom de code de la distribution cible, alors ils seront utilisés en
+préférence aux autres fichiers plus généraux.
+.PP
+.\" FIXME
+Tous les fichiers de configuration sont des scripts shell qui sont sourcés
+par un programme live\-build. Ceci signifie qu'ils doivent suivre la syntaxe
+shell normale. Vous pouvez également mettre des commentaires dans ces
+fichiers; les lignes démarrant avec "#" sont ignorées.
+
+.SH FICHIERS
+.IP \fB/etc/live/build.conf\fP 4
+.IP \fB/etc/live/build/*\fP 4
+
+.SH "VOIR AUSSI"
+\fIlive\-boot\fP(7)
+.PP
+\fIlive\-config\fP(7)
+.PP
+Ce programme est une partie de live\-build.
+
+.SH "PAGE D'ACCUEIL"
+Davantage d'informations sur live\-build et le project Live Systems peuvent
+être trouvèes sur la page <\fIhttp://live\-systems.org/\fP> et dans le
+manuel sur <\fIhttp://live\-systems.org/manual/\fP>.
+
+.SH BOGUES
+Les bogues peuvent être signalés en soumettant un rapport de bogue à propos
+du paquet live\-config dans le système de gestion des bogues sur
+<\fIhttp://bugs.debian.org/\fP> ou en envoyant un courrier électronique
+à la liste de diffusion Live Systems à
+<\fIdebian\-live@lists.debian.org\fP>
+
+.SH AUTEUR
+live\-config a été écrit par Daniel Baumann
+<\fImail@daniel\-baumann.ch\fP>.
